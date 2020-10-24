@@ -22,18 +22,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property Researcher $researcher
  * @property User $user
  */
-class Project extends Model
+class Researchproject extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'researchprojects';
 
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'Project_ID';

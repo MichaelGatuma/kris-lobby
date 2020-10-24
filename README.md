@@ -15,6 +15,6 @@ Major platform changes:
 - Uses Laravel Livewire (JQuery replacement)
 - Uses Tailwind CSS (No Bootstrap)
 
-Schema
+### Schema
 
 ![schema-image](https://github.com/MichaelGatuma/kris-lobby/blob/models/schema.png)

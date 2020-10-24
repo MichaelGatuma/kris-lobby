@@ -11,5 +11,6 @@
 This application is used as a data entry portal for the KRIS project.
 Major platform changes:
 - Runs on Laravel version 8
-- Uses Laravel Livewire
+- Uses Alpinejs (JavaScript behavior)
+- Uses Laravel Livewire (JQuery replacement)
 - Uses Tailwind CSS (No Bootstrap)

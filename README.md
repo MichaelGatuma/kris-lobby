@@ -9,7 +9,7 @@
 
 ## About kris-lobby
 This application is used as a data entry portal for the KRIS project.
-Major platform changes include:
+Major platform changes:
 - Runs on Laravel version 8
 - Uses Laravel Livewire
 - Uses Tailwind CSS (No Bootstrap)

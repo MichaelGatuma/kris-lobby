@@ -17,4 +17,4 @@ Major platform changes:
 
 Schema
 
-![myimage-alt-tag](url-to-image)
+![schema-image](https://github.com/MichaelGatuma/kris-lobby/blob/models/schema.png)

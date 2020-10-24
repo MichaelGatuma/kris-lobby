@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages.researchers');
 })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/register', function () {
+    return view('pages.researchers');
+});

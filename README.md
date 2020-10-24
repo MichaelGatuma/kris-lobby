@@ -14,3 +14,7 @@ Major platform changes:
 - Uses Alpinejs (JavaScript behavior)
 - Uses Laravel Livewire (JQuery replacement)
 - Uses Tailwind CSS (No Bootstrap)
+
+Schema
+
+![myimage-alt-tag](url-to-image)

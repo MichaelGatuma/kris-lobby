@@ -1,9 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    experimental: {
-        applyComplexClasses: true,
-    },
     future: {
         removeDeprecatedGapUtilities: true,
         purgeLayersByDefault: true,

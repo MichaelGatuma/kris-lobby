@@ -1,10 +1,18 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
+    future: {
+        removeDeprecatedGapUtilities: true,
+        purgeLayersByDefault: true,
+    },
     purge: [
+        //if Jetstream
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        //endif Jetstream
+        './config/tall-forms.php', //your config for this package
+        './vendor/tanthammar/tall-forms/**/*.php', //this package files
     ],
 
     theme: {
@@ -19,5 +27,8 @@ module.exports = {
         opacity: ['responsive', 'hover', 'focus', 'disabled'],
     },
 
-    plugins: [require('@tailwindcss/ui')],
+    plugins: [
+        require('@tailwindcss/ui'),
+        require('@tailwindcss/custom-forms')
+    ],
 };

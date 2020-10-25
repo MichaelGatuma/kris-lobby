@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('pages.researchers');
-})->name('dashboard');
-Route::middleware(['auth:sanctum', 'verified'])->get('/register', function () {
-    return view('pages.researchers');
+Route::middleware(['auth:sanctum','verified'])->group(function(){
+    Route::get('/dashboard', [App\Http\Controllers\ResearcherController::class,'index'])->name('dashboard');
+    Route::get('/register',function (){
+        return view('pages.researchers');
+    });
 });

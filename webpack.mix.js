@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-const cssNesting = require('postcss-nesting'); //tall-forms
 
 /*
  |--------------------------------------------------------------------------
@@ -15,7 +14,6 @@ const cssNesting = require('postcss-nesting'); //tall-forms
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
-        cssNesting(),
         require('tailwindcss'),
     ])
     .webpackConfig(require('./webpack.config'));

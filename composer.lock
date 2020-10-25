@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "842712a64942ef2f25aa43cf9f338204",
+    "content-hash": "5d150af3df8842bfaa75ab48928cf12a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -106,75 +106,6 @@
             "description": "BaconQrCode is a QR code generator for PHP.",
             "homepage": "https://github.com/Bacon/BaconQrCode",
             "time": "2020-07-30T16:40:58+00:00"
-        },
-        {
-            "name": "blade-ui-kit/blade-icons",
-            "version": "0.4.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/blade-ui-kit/blade-icons.git",
-                "reference": "b93505c65a1fc095df517d5640bae295779411e6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/b93505c65a1fc095df517d5640bae295779411e6",
-                "reference": "b93505c65a1fc095df517d5640bae295779411e6",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^7.14|^8.0",
-                "illuminate/filesystem": "^7.14|^8.0",
-                "illuminate/support": "^7.14|^8.0",
-                "illuminate/view": "^7.14|^8.0",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.16",
-                "mockery/mockery": "^1.3",
-                "orchestra/testbench": "^5.0|^6.0",
-                "phpunit/phpunit": "^8.0|^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "BladeUI\\Icons\\BladeIconsServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "BladeUI\\Icons\\": "src"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Wathan",
-                    "email": "adam.wathan@gmail.com"
-                },
-                {
-                    "name": "Dries Vints",
-                    "email": "dries@vints.io",
-                    "homepage": "https://driesvints.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A package to easily make use of icons in your Laravel Blade views.",
-            "homepage": "https://github.com/blade-ui-kit/blade-icons",
-            "keywords": [
-                "blade",
-                "icons",
-                "laravel",
-                "svg"
-            ],
-            "time": "2020-09-04T11:36:46+00:00"
         },
         {
             "name": "brick/math",
@@ -4667,61 +4598,6 @@
                 "dump"
             ],
             "time": "2020-09-18T14:27:32+00:00"
-        },
-        {
-            "name": "tanthammar/tall-forms",
-            "version": "5.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tanthammar/tall-forms.git",
-                "reference": "0885ff05d96726be3bb667604f69f6da01ab81cb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tanthammar/tall-forms/zipball/0885ff05d96726be3bb667604f69f6da01ab81cb",
-                "reference": "0885ff05d96726be3bb667604f69f6da01ab81cb",
-                "shasum": ""
-            },
-            "require": {
-                "blade-ui-kit/blade-icons": "^0.4.5",
-                "laravel/framework": "^7.0|^8.0",
-                "livewire/livewire": "^2.2.6",
-                "php": "^7.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Tanthammar\\TallForms\\FormServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Tanthammar\\TallForms\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tina Hammar",
-                    "email": "post@tinahammar.se",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A dynamic, responsive Laravel Livewire form generator with realtime validation, file uploads, array fields, and more.",
-            "homepage": "https://github.com/tanthammar/tall-forms",
-            "keywords": [
-                "Forms",
-                "alpinejs",
-                "laravel",
-                "livewire",
-                "tailwind"
-            ],
-            "time": "2020-10-24T12:48:08+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

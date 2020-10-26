@@ -2,7 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1a6724d-207b-446f-96dd-933aebb2740b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/blade-icons.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/css/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/css/tall-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/css/tall-theme_bak.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/add-outline.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/cheveron-outline-down.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/cheveron-outline-up.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/close-outline.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/edit-crop.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-alt.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-archive.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-audio.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-code.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-excel.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-image.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-pdf.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-powerpoint.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-video.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-word.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/upload.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/pages/default.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/researchers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/researchers.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -189,15 +224,21 @@
   <component name="ProjectId" id="1jK08T2pl5e0nmHCo3GG6b25lDi" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/css" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\kris-lobby\resources\css" />
       <recent name="C:\laragon\www\kris-lobby" />
       <recent name="C:\laragon\www\kris-lobby\resources\views\vendor\jetstream\components\layout" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="npm run dev" />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -211,11 +252,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.phpunit.xml">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
@@ -225,11 +281,6 @@
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
               <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@4d45df63" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@4d45df63" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@22bdd123" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />

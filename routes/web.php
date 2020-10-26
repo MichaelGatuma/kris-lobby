@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum','verified'])->group(function(){
-    Route::get('/dashboard', [App\Http\Controllers\ResearcherController::class,'index'])->name('dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\PagesController::class,'researchers'])->name('dashboard');
     Route::get('/register',function (){
         return view('pages.researchers');
     });

@@ -40,7 +40,9 @@ class createPublication extends Component
     public function fields()
     {
         return [
-            Input::make('Name')->rules('required'),
+            Input::make('Publication Title')
+                ->rules('required'),
+
         ];
     }
 }

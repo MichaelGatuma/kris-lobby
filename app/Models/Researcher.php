@@ -28,9 +28,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Researcher extends Model
 {
+    protected $table='researchers';
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'Researcher_ID';

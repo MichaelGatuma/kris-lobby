@@ -18,4 +18,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
     Route::get('/register',function (){
         return view('pages.researchers');
     });
+    Route::get('/',function (){
+        return view('pages.researchers');
+    });
 });

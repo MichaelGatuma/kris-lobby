@@ -2,42 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1a6724d-207b-446f-96dd-933aebb2740b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/blade-icons.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/css/custom.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/css/tall-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/css/tall-theme_bak.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/add-outline.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/cheveron-outline-down.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/cheveron-outline-up.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/close-outline.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/edit-crop.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-alt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-archive.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-audio.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-code.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-excel.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-image.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-pdf.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-powerpoint.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-video.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file-word.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/file.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/svg/tall-forms/upload.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/pages/default.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createResearcher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/en/crud.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/en/crud/researcher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/en/global.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kris-lobby.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kris-lobby.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/researchers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/researchers.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,13 +52,6 @@
         <item name="kris@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="kris: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="kris@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="kris: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="researchers: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -217,8 +185,6 @@
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/blade-ui-kit/blade-icons" />
       <path value="$PROJECT_DIR$/vendor/tanthammar/tall-forms" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jK08T2pl5e0nmHCo3GG6b25lDi" />

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Forms;
 
 use App\Models\Funder;
+use Illuminate\Validation\Rules\In;
 use Livewire\Component;
 use Tanthammar\TallForms\Input;
 use Tanthammar\TallForms\TallForm;
@@ -15,7 +16,7 @@ class createFunder extends Component
     {
         //Gate::authorize()
         $this->fill([
-            'formTitle' => trans('global.create').' '.trans('crud.funder.title_singular'),
+            'formTitle' => trans('global.create') . ' ' . trans('crud.funder.title_singular'),
             'wrapWithView' => false, //see https://github.com/tanthammar/tall-forms/wiki/installation/Wrapper-Layout
             'showGoBack' => false,
             'showReset' => false,
@@ -40,7 +41,16 @@ class createFunder extends Component
     public function fields()
     {
         return [
-            Input::make('Name')->rules('required'),
+            Input::make('Funder Name')
+                ->rules('required'),
+            Input::make('Funder Website')
+                ->type('url')
+                ->prefix('https://')
+                ->rules('string|url'),
+            Input::make('Physical Address')
+                ->rules('address'),
+            Input::make('Postal Address')
+                ->rules('address'),
         ];
     }
 }

@@ -68,7 +68,7 @@ class createResearcher extends Component
                 ->options($this->getResearchAreas())
                 ->placeholder('Select research area?')
                 ->rules(['required'])
-                ->errorMsg('You must specify gender'),
+                ->errorMsg('You must specify research area'),
             Select::make('Research Institution')
                 ->options(Researchinstitution::all()->pluck(['ResearchInstitution_ID' => 'RIName']))
                 ->placeholder('Specify Institution?')

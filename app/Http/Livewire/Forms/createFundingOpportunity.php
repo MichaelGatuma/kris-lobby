@@ -38,7 +38,7 @@ class createFundingOpportunity extends Component
     // OPTIONAL method used for the "Save and stay" button, this method already exists in the TallForm trait
     public function onUpdateModel($validated_data)
     {
-        $this->model->update($validated_data);
+//        $this->model->update($validated_data);
     }
 
     public function updatedFunderID($validated_value)

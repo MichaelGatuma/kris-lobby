@@ -24,7 +24,7 @@ class createProject extends Component
 
     public function mount(?Researchproject $researchproject)
     {
-        $researchproject=Researchproject::first();
+//        $researchproject=Researchproject::first();
         $this->isFunded = false;
         //Gate::authorize()
         $this->fill([
@@ -47,19 +47,19 @@ class createProject extends Component
     // OPTIONAL method used for the "Save and stay" button, this method already exists in the TallForm trait
     public function onUpdateModel($validated_data)
     {
-        $this->model->update($validated_data);
+//        $this->model->update($validated_data);
     }
     public function updatedResearcherID($validated_value)
     {
 //        $this->model = new Researchproject();
-        if (Researchproject::where('Researcher_ID', '=', $validated_value)->first() != null) {
-            $this->model = Researchproject::where('Researcher_ID', '=', $validated_value)->first();
-        } else {
-            $this->model = new Researchproject();
-        }
-        $this->model->User_ID = Researcher::find($validated_value)->User_ID;
-        $this->model->Researcher_ID = $validated_value;
-        $this->mount_form($this->model);
+//        if (Researchproject::where('Researcher_ID', '=', $validated_value)->first() != null) {
+//            $this->model = Researchproject::where('Researcher_ID', '=', $validated_value)->first();
+//        } else {
+//            $this->model = new Researchproject();
+//        }
+//        $this->model->User_ID = Researcher::find($validated_value)->User_ID;
+//        $this->model->Researcher_ID = $validated_value;
+//        $this->mount_form($this->model);
     }
     public function saveAbstractDocumentPath($validated_file)
     {

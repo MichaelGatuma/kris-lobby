@@ -9,7 +9,7 @@ return [
         'title_singular' => 'Publication',
         'title_plural' => 'Publications'
     ],
-    'project' => [
+    'researchproject' => [
         'title_singular' => 'Project',
         'title_plural' => 'Projects'
     ],
@@ -20,5 +20,9 @@ return [
     'funder' => [
         'title_singular' => 'Funder',
         'title_plural' => 'Funders'
+    ],
+    'user' => [
+        'title_singular' => 'User',
+        'title_plural' => 'Users'
     ],
 ];

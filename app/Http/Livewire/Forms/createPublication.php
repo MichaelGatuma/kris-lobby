@@ -11,6 +11,7 @@ use Livewire\WithFileUploads;
 use Tanthammar\TallForms\FileUpload;
 use Tanthammar\TallForms\Input;
 use Tanthammar\TallForms\Select;
+use Tanthammar\TallForms\SpatieTags;
 use Tanthammar\TallForms\TallForm;
 use Tanthammar\TallForms\Textarea;
 use Tanthammar\TallForms\Traits\UploadsFiles;
@@ -23,7 +24,7 @@ class createPublication extends Component
 
     public function mount(?Publication $publication)
     {
-        $publication = Publication::first();
+//        $publication = Publication::first();
 //        $this->model->User_ID=Researcher::find($this->form_data['Researcher_ID'])->User_ID;
         //Gate::authorize()
         $this->fill([
@@ -47,7 +48,7 @@ class createPublication extends Component
     // OPTIONAL method used for the "Save and stay" button, this method already exists in the TallForm trait
     public function onUpdateModel($validated_data)
     {
-        $this->model->update($validated_data);
+//        $this->model->update($validated_data);
     }
 
     public function savePublicationPath($validated_file)
@@ -63,14 +64,14 @@ class createPublication extends Component
     public function updatedResearcherID($validated_value)
     {
 //        $this->model = new Publication();
-        if (Publication::where('Researcher_ID', '=', $validated_value)->first() != null) {
-            $this->model = Publication::where('Researcher_ID', '=', $validated_value)->first();
-        } else {
-            $this->model = new Publication();
-        }
-        $this->model->User_ID = Researcher::find($validated_value)->User_ID;
-        $this->model->Researcher_ID = $validated_value;
-        $this->mount_form($this->model);
+//        if (Publication::where('Researcher_ID', '=', $validated_value)->first() != null) {
+//            $this->model = Publication::where('Researcher_ID', '=', $validated_value)->first();
+//        } else {
+//            $this->model = new Publication();
+//        }
+//        $this->model->User_ID = Researcher::find($validated_value)->User_ID;
+//        $this->model->Researcher_ID = $validated_value;
+//        $this->mount_form($this->model);
     }
 
     public function fields()

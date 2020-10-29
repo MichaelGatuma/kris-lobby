@@ -17,18 +17,16 @@ use Tanthammar\TallForms\TallForm;
 use Tanthammar\TallForms\Textarea;
 use Tanthammar\TallForms\Traits\FillsColumns;
 use Tanthammar\TallForms\Traits\UploadsFiles;
-use function PHPUnit\Framework\isEmpty;
 
 class createResearcher extends Component
 {
     use TallForm, WithFileUploads, UploadsFiles, FillsColumns;
     public $CV;
     public $users = [];
-    public $user_id;
 
     public function mount(?Researcher $researcher)
     {
-        $this->users = User::all()->sortBy('id')->pluck( 'id','name',)->toArray();
+        $this->users = collect(User::all()->pluck('id', 'name',))->sort();
 
         //Gate::authorize()
         $this->fill([
@@ -53,25 +51,15 @@ class createResearcher extends Component
         $this->model->update($validated_data);
     }
 
-    public function updatedUser($validated_value)
+    public function updatedUserID($validated_value)
     {
-        $this->user_id = $this->form_data['user'];
-//        $this->users = User::all()->sortBy('id')->pluck('id', 'name')->toArray();
-//        $this->form_data['user']=$this->user_id;
-        if ($this->user_id > 0 && !is_null(User::find($this->user_id)->researcher)) {
-            $researcher = User::find($this->user_id)->researcher;
-            $this->form_data['Gender'] = $researcher->Gender;
-            $this->form_data['PhoneNumber'] = $researcher->PhoneNumber;
-            $this->form_data['DOB'] = $researcher->DOB;
-            $this->form_data['ResearchAreaOfInterest'] = $researcher->ResearchAreaOfInterest;
-            $this->form_data['DepartmentID'] = $researcher->DepartmentID;
-            $this->form_data['ResearchInstitutionID'] = $researcher->ResearchInstitutionID;
-            $this->form_data['Affiliation'] = $researcher->Affiliation;
-            $this->form_data['AboutResearcher'] = $researcher->AboutResearcher;
-            $this->form_data['Approved'] = $researcher->Approved;
-        } elseif ($this->user_id > 0 && is_null(User::find($this->user_id)->researcher)) {
+        if ($this->form_data['User_ID'] > 0) {
+            $this->mount_form(User::find($validated_value)->researcher);
+            if (is_null(User::find($validated_value)->researcher)) {
+                $this->form_data['User_ID'] = $validated_value;
+            }
 
-        } else{
+        } else {
             $this->resetFormData();
         }
     }
@@ -86,22 +74,14 @@ class createResearcher extends Component
         $this->form_data['Affiliation'] = Department::where('Department_ID', '=', $this->form_data['DepartmentID'])->pluck('DptName')->first() . ' - ' . Researchinstitution::where('ResearchInstitution_ID', '=', $this->form_data['ResearchInstitutionID'])->pluck('RIName')->first();
     }
 
-    public function getResearchAreas()
+    public function saveCV($validated_file)
     {
-        $researchareas = DB::table('researchareas_ktbl')->pluck('ResearchAreaName');
-        return collect($researchareas)->values()->all();
-    }
-
-    public function getDepartments()
-    {
-        $departments = Department::all()->pluck('Department_ID','DptName', );
-        return collect($departments);
-    }
-
-    public function getInstitutions()
-    {
-        $institutions= Researchinstitution::all()->pluck( 'ResearchInstitution_ID','RIName',)->toArray();
-        return collect($institutions);
+        $path = filled($validated_file) ? $this->CV->store('CVs') : null;
+        //do something with the model?
+        if (optional($this->model)->exists && filled($path)) {
+            $this->model->CV = $path;
+            $this->model->save();
+        }
     }
 
     public function fields()
@@ -111,9 +91,10 @@ class createResearcher extends Component
                 ->options($this->users)
                 ->placeholder('Select user')
                 ->rules(['required'])
+                ->wire('wire:model')
                 ->errorMsg('You must select a user'),
             Select::make('Gender', 'Gender')
-                ->options(['Male', 'Female'])
+                ->options(['Male' => 'Male', 'Female' => 'Female'])
                 ->placeholder('Male or female?')
                 ->rules(['required'])
                 ->errorMsg('You must specify gender'),
@@ -129,6 +110,7 @@ class createResearcher extends Component
                 ->type('tel')
                 ->rules(['required', 'numeric'])
                 ->inputAttr(['pattern' => "[0-9]{12}", 'maxlength' => 12])
+                ->wire('wire:model')
                 ->placeholder('i.e 0712345678'),
             Select::make('Research Area', 'ResearchAreaOfInterest')
                 ->options($this->getResearchAreas())
@@ -145,7 +127,7 @@ class createResearcher extends Component
                 ->placeholder('Department?')
                 ->rules(['required'])
                 ->errorMsg('You must specify department'),
-            Input::make('Affiliation', 'Affiliation')->inputAttr(['disabled' => true]),
+            Input::make('Affiliation', 'Affiliation')->inputAttr(['disabled' => true])->help('This field is filled automatically'),
             Radio::make('Approved?', 'Approved')
                 ->options(['Yes' => 1, 'No' => 0])
                 ->default(1),
@@ -155,10 +137,32 @@ class createResearcher extends Component
                 ->required()
                 ->errorMsg('Add an about info')
                 ->rules('required|string'),
-            $this->user_id > 0 ? FileUpload::make('Upload CV', 'CV')
-                ->help('Max 1024kb, png, jpeg, gif or tiff') //important for usability to inform about type/size limitations
-                ->rules('nullable|mimes:png,jpg,jpeg,gif,tiff|max:1024') //only if you want to override livewire main config validation
-                ->accept("pdf/*") : null,
+            optional($this->model)->exists //you probably do not want to attach files if the model does not exist
+                ? FileUpload::make('Upload CV', 'CV')
+                ->help('Max 5 megabytes, *.pdf (Existing CV files will be replaced)') //important for usability to inform about type/size limitations
+                ->rules('nullable|mimes:pdf|max:5120') //only if you want to override livewire main config validation
+                ->accept(".pdf") : null,
         ];
+    }
+
+    public
+    function getResearchAreas()
+    {
+        $researchareas = DB::table('researchareas_ktbl')->pluck('ResearchAreaName');
+        return collect($researchareas)->values()->all();
+    }
+
+    public
+    function getInstitutions()
+    {
+        $institutions = Researchinstitution::all()->pluck('ResearchInstitution_ID', 'RIName',)->toArray();
+        return collect($institutions);
+    }
+
+    public
+    function getDepartments()
+    {
+        $departments = Department::all()->pluck('Department_ID', 'DptName',);
+        return collect($departments);
     }
 }

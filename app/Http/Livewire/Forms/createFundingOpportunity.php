@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Forms;
 
+use App\Models\Funder;
 use App\Models\FundingOpportunity;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -21,6 +22,7 @@ class createFundingOpportunity extends Component
             'wrapWithView' => false, //see https://github.com/tanthammar/tall-forms/wiki/installation/Wrapper-Layout
             'showGoBack' => false,
             'showReset' => false,
+            'showSave'=>false,
         ]);
         $this->mount_form($fundingopportunity); // $fundingopportunity from hereon, called $this->model
     }
@@ -39,23 +41,36 @@ class createFundingOpportunity extends Component
         $this->model->update($validated_data);
     }
 
+    public function updatedFunderID($validated_value)
+    {
+//        $this->model = FundingOpportunity::where('Funder_ID', '=', $validated_value);
+//        $this->mount_form($this->model);
+    }
+
     public function fields()
     {
         return [
-            Select::make('Research area')
-                ->options($this->getResearchAreas()),
-            Input::make('Funding Opportunity url')
+            Select::make('Funder', 'Funder_ID')
+                ->options($this->getFunders())
+                ->rules('required'),
+            Select::make('Research area Funded', 'ResearchAreasFunded')
+                ->options($this->getResearchAreas())->wire('wire:model'),
+            Input::make('Funding Opportunity url', 'FundingOpportunityURL')
                 ->type('url')
                 ->prefix('https://')
                 ->rules('url'),
-            Input::make('Application Deadline')
+            Input::make('Application Deadline', 'DeadlineForApplication')
                 ->type('date')
                 ->step(7)
                 ->min(now()->format('Y-m-d'))
-                ->max(now()->format('Y-m-d'))
-                ->default('1990-01-01')//important; you must cast existing model date to the correct html5 date input format
+                ->default(now()->format('Y-m-d'))//important; you must cast existing model date to the correct html5 date input format
                 ->rules('required|date_format:"Y-m-d"'),
         ];
+    }
+
+    public function getFunders()
+    {
+        return Funder::all()->pluck('Funder_ID', 'FunderName');
     }
 
     public function getResearchAreas()

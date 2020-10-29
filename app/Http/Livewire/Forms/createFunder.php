@@ -41,16 +41,16 @@ class createFunder extends Component
     public function fields()
     {
         return [
-            Input::make('Funder Name')
-                ->rules('required'),
-            Input::make('Funder Website')
+            Input::make('Funder Name','FunderName')
+                ->rules('required|string'),
+            Input::make('Funder Website','FunderWebsite')
                 ->type('url')
                 ->prefix('https://')
                 ->rules('string|url'),
-            Input::make('Physical Address')
-                ->rules('address'),
-            Input::make('Postal Address')
-                ->rules('address'),
+            Input::make('Physical Address','FunderPhysicalAddress')
+                ->rules('address|string'),
+            Input::make('Postal Address','FunderPostalAddress')
+                ->rules('address|string'),
         ];
     }
 }

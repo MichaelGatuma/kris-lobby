@@ -13,13 +13,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $FunderphysicalAddress
  * @property string $FunderPostalAddress
  * @property Funder $funder
- * @property Fundingopportunity[] $fundingopportunities
+ * @property FundingOpportunity[] $fundingopportunities
  */
 class Funder extends Model
 {
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'Funder_ID';
@@ -42,6 +42,6 @@ class Funder extends Model
      */
     public function fundingopportunities()
     {
-        return $this->hasMany('App\Models\Fundingopportunity', 'Funder_ID', 'Funder_ID');
+        return $this->hasMany('App\Models\FundingOpportunity', 'Funder_ID', 'Funder_ID');
     }
 }

@@ -12,8 +12,20 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-jet-nav-link href="{{ route('researchers') }}" :active="request()->routeIs('researchers')|request()->routeIs('dashboard')">
+                        {{ __('Researchers') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('publications') }}" :active="request()->routeIs('publications')">
+                        {{ __('Publications') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
+                        {{ __('Projects') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('funders') }}" :active="request()->routeIs('funders')">
+                        {{ __('Funders') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('funding') }}" :active="request()->routeIs('funding')">
+                        {{ __('Funding') }}
                     </x-jet-nav-link>
                 </div>
             </div>

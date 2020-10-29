@@ -14,8 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum','verified'])->group(function(){
-    Route::get('/dashboard', [App\Http\Controllers\PagesController::class,'researchers'])->name('dashboard');
-    Route::get('/',function (){
+    Route::get('/', function (){
         return view('pages.researchers');
-    });
+    })->name('dashboard');
+    Route::get('/researchers',function (){
+        return view('pages.researchers');
+    })->name('researchers');
+    Route::get('/publications', function (){
+        return view('pages.publications');
+    })->name('publications');
+    Route::get('/projects', function (){
+        return view('pages.projects');
+    })->name('projects');
+    Route::get('/funders', function (){
+        return view('pages.funders');
+    })->name('funders');
+    Route::get('/funding', function (){
+        return view('pages.funding-opportunities');
+    })->name('funding');
 });

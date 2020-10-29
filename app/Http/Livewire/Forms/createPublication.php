@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Forms;
 
 use App\Models\Publication;
-use App\Models\Researcher;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -16,12 +15,12 @@ use Tanthammar\TallForms\Traits\UploadsFiles;
 class createPublication extends Component
 {
     use TallForm, WithFileUploads, UploadsFiles;
-    public $files;
-    public $title;
-    public $title2;
+    public $PublicationPath;
+    public $UserID;
 
     public function mount(?Publication $publication)
     {
+
         //Gate::authorize()
         $this->fill([
             'formTitle' => trans('global.create') . ' ' . trans('crud.publication.title_singular'),
@@ -46,54 +45,40 @@ class createPublication extends Component
         $this->model->update($validated_data);
     }
 
-    /////////////////////////////////
-    public function afterFormProperties()
+    public function render()
     {
-//        $this->title2=$this->title;
-        $this->form_data['title2'] = $this->title;//change the value of the populated form data
-        $this->form_data['title2'] = $this->form_data['title'];
+        $createResearcher = new createResearcher;
+        $this->form_data['UserID'] = $createResearcher->uid;
+        return $this->formView();
     }
 
-    public function updatedTitle($validated_value)
-    {
-//        todo: this code works
-//        $this->form_data['title2'] = $this->form_data['title'];
-        $this->form_data['title2'] = User::where('id', '=', $this->form_data['title'])->pluck('name');
-        $this->title = $this->form_data['title'];
-    }
-//    public function render()
-//    {
-//        $this->title2=$this->title;
-//        $this->form_data['title2'] = $this->title;//change the value of the populated form data
-//        $this->form_data['title2']=$this->form_data['title'];
-//
-//        return $this->formView();
-//    }
-    //////////////////////////////////
     public function fields()
     {
         return [
-            Input::make('Publication Title', 'title')
+            Input::make('User ID', 'UserID')
                 ->rules('required')
                 ->wire('wire:model'),
-            FileUpload::make('Upload Publication', 'files')
+            Input::make('Publication Title', 'PublicationTitle')
+                ->rules('required')
+                ->wire('wire:model'),
+            FileUpload::make('Upload Publication', 'PublicationPath')
                 ->multiple()
                 ->help('Max 1024kb, png, jpeg, gif or tiff') //important for usability to inform about type/size limitations
                 ->rules('nullable|mimes:png,jpg,jpeg,gif,tiff|max:1024') //only if you want to override livewire main config validation
                 ->accept("pdf/*"),
-            Input::make('Date of Publication', 'publication_date')
+            Input::make('Date of Publication', 'DateOfPublication')
                 ->type('date')
                 ->step(7)
                 ->min('1900-01-01')
                 ->max(now()->format('Y-m-d'))
-                ->default('1990-01-01')//important; you must cast existing model date to the correct html5 date input format
+                ->default('2001-01-01')//important; you must cast existing model date to the correct html5 date input format
                 ->rules('required|date_format:"Y-m-d"'),
-            $this->title>0 ? Textarea::make('Collaborators', 'title2')
+            Textarea::make('Collaborators', 'Collaborators')
                 ->rows(3)
                 ->placeholder('')
                 ->rules('string')
-                ->wire('wire:model'): null,
-            Input::make('Publication url')
+                ->wire('wire:model'),
+            Input::make('Publication url', 'PublicationURL')
                 ->type('url')
                 ->prefix('https://')
                 ->rules('active_url'),

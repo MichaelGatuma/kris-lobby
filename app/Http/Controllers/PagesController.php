@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+
     public function researchers(){
-        $researcher=Researcher::all()->first;
-        return view('pages.researchers',compact(['researcher']));
+        return view('pages.researchers');
     }
 }

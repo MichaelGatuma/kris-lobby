@@ -23,6 +23,7 @@ class createResearcher extends Component
     use TallForm, WithFileUploads, UploadsFiles, FillsColumns;
     public $CV;
     public $users = [];
+    public $uid;
 
     public function mount(?Researcher $researcher)
     {
@@ -53,7 +54,8 @@ class createResearcher extends Component
 
     public function updatedUserID($validated_value)
     {
-        if ($this->form_data['User_ID'] > 0) {
+        $this->uid = $validated_value;
+        if ($validated_value > 0) {
             $this->mount_form(User::find($validated_value)->researcher);
             if (is_null(User::find($validated_value)->researcher)) {
                 $this->form_data['User_ID'] = $validated_value;

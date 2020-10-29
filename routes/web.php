@@ -13,23 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:sanctum','verified'])->group(function(){
-    Route::get('/', function (){
-        return view('pages.researchers');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/', function () {
+        return view('pages.users');
     })->name('dashboard');
-    Route::get('/researchers',function (){
+    Route::get('/users', function () {
+        return view('pages.users');
+    })->name('users');
+    Route::get('/researchers', function () {
         return view('pages.researchers');
     })->name('researchers');
-    Route::get('/publications', function (){
+    Route::get('/publications', function () {
         return view('pages.publications');
     })->name('publications');
-    Route::get('/projects', function (){
+    Route::get('/projects', function () {
         return view('pages.projects');
     })->name('projects');
-    Route::get('/funders', function (){
+    Route::get('/funders', function () {
         return view('pages.funders');
     })->name('funders');
-    Route::get('/funding', function (){
+    Route::get('/funding', function () {
         return view('pages.funding-opportunities');
     })->name('funding');
 });

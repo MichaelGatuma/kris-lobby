@@ -91,11 +91,11 @@ class User extends Authenticatable
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function researchers()
+    public function researcher()
     {
-        return $this->hasMany('App\Models\Researcher', 'User_ID');
+        return $this->hasOne('App\Models\Researcher', 'User_ID');
     }
 
     /**

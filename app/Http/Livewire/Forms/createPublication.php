@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Forms;
 
 use App\Models\Publication;
+use App\Models\Researcher;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Tanthammar\TallForms\FileUpload;
@@ -13,8 +15,10 @@ use Tanthammar\TallForms\Traits\UploadsFiles;
 
 class createPublication extends Component
 {
-    use TallForm,WithFileUploads, UploadsFiles;
+    use TallForm, WithFileUploads, UploadsFiles;
     public $files;
+    public $title;
+    public $title2;
 
     public function mount(?Publication $publication)
     {
@@ -42,11 +46,36 @@ class createPublication extends Component
         $this->model->update($validated_data);
     }
 
+    /////////////////////////////////
+    public function afterFormProperties()
+    {
+//        $this->title2=$this->title;
+        $this->form_data['title2'] = $this->title;//change the value of the populated form data
+        $this->form_data['title2'] = $this->form_data['title'];
+    }
+
+    public function updatedTitle($validated_value)
+    {
+//        todo: this code works
+//        $this->form_data['title2'] = $this->form_data['title'];
+        $this->form_data['title2'] = User::where('id', '=', $this->form_data['title'])->pluck('name');
+        $this->title = $this->form_data['title'];
+    }
+//    public function render()
+//    {
+//        $this->title2=$this->title;
+//        $this->form_data['title2'] = $this->title;//change the value of the populated form data
+//        $this->form_data['title2']=$this->form_data['title'];
+//
+//        return $this->formView();
+//    }
+    //////////////////////////////////
     public function fields()
     {
         return [
-            Input::make('Publication Title')
-                ->rules('required'),
+            Input::make('Publication Title', 'title')
+                ->rules('required')
+                ->wire('wire:model'),
             FileUpload::make('Upload Publication', 'files')
                 ->multiple()
                 ->help('Max 1024kb, png, jpeg, gif or tiff') //important for usability to inform about type/size limitations
@@ -59,14 +88,15 @@ class createPublication extends Component
                 ->max(now()->format('Y-m-d'))
                 ->default('1990-01-01')//important; you must cast existing model date to the correct html5 date input format
                 ->rules('required|date_format:"Y-m-d"'),
-            Textarea::make('Collaborators')
+            $this->title>0 ? Textarea::make('Collaborators', 'title2')
                 ->rows(3)
                 ->placeholder('')
-                ->rules('string'),
+                ->rules('string')
+                ->wire('wire:model'): null,
             Input::make('Publication url')
-            ->type('url')
-            ->prefix('https://')
-            ->rules('active_url'),
+                ->type('url')
+                ->prefix('https://')
+                ->rules('active_url'),
         ];
     }
 }

@@ -28,7 +28,7 @@ class createResearcher extends Component
 
     public function mount(?Researcher $researcher)
     {
-        $this->users = User::all()->sortBy('id')->pluck( 'id','name',)->toArray();
+        $this->users = User::all()->sortBy('id')->pluck('id', 'name')->toArray();
 
         //Gate::authorize()
         $this->fill([
@@ -56,8 +56,6 @@ class createResearcher extends Component
     public function updatedUser($validated_value)
     {
         $this->user_id = $this->form_data['user'];
-//        $this->users = User::all()->sortBy('id')->pluck('id', 'name')->toArray();
-//        $this->form_data['user']=$this->user_id;
         if ($this->user_id > 0 && !is_null(User::find($this->user_id)->researcher)) {
             $researcher = User::find($this->user_id)->researcher;
             $this->form_data['Gender'] = $researcher->Gender;
@@ -71,19 +69,18 @@ class createResearcher extends Component
             $this->form_data['Approved'] = $researcher->Approved;
         } elseif ($this->user_id > 0 && is_null(User::find($this->user_id)->researcher)) {
 
-        } else{
+        } else {
             $this->resetFormData();
         }
     }
-
     public function updatedDepartmentID($validated_value)
     {
-        $this->form_data['Affiliation'] = Department::where('Department_ID', '=', $this->form_data['DepartmentID'])->pluck('DptName')->first() . ' - ' . Researchinstitution::where('ResearchInstitution_ID', '=', $this->form_data['ResearchInstitutionID'])->pluck('RIName')->first();
+        $this->form_data['Affiliation']=Department::where('Department_ID','=',$this->form_data['DepartmentID'])->pluck('DptName')->first().' - '.Researchinstitution::where('ResearchInstitution_ID','=',$this->form_data['ResearchInstitutionID'])->pluck('RIName')->first();
     }
 
     public function updatedResearchInstitutionID($validated_value)
     {
-        $this->form_data['Affiliation'] = Department::where('Department_ID', '=', $this->form_data['DepartmentID'])->pluck('DptName')->first() . ' - ' . Researchinstitution::where('ResearchInstitution_ID', '=', $this->form_data['ResearchInstitutionID'])->pluck('RIName')->first();
+        $this->form_data['Affiliation']=Department::where('Department_ID','=',$this->form_data['DepartmentID'])->pluck('DptName')->first().' - '.Researchinstitution::where('ResearchInstitution_ID','=',$this->form_data['ResearchInstitutionID'])->pluck('RIName')->first();
     }
 
     public function getResearchAreas()
@@ -92,25 +89,14 @@ class createResearcher extends Component
         return collect($researchareas)->values()->all();
     }
 
-    public function getDepartments()
-    {
-        $departments = Department::all()->pluck('Department_ID','DptName', );
-        return collect($departments);
-    }
-
-    public function getInstitutions()
-    {
-        $institutions= Researchinstitution::all()->pluck( 'ResearchInstitution_ID','RIName',)->toArray();
-        return collect($institutions);
-    }
-
     public function fields()
     {
         return [
-            Select::make('Select Existing User', 'User_ID')
+            Select::make('Select Existing User', 'user')
                 ->options($this->users)
                 ->placeholder('Select user')
                 ->rules(['required'])
+                ->wire('wire:model')
                 ->errorMsg('You must select a user'),
             Select::make('Gender', 'Gender')
                 ->options(['Male', 'Female'])
@@ -136,16 +122,25 @@ class createResearcher extends Component
                 ->rules(['required'])
                 ->errorMsg('You must specify research area'),
             Select::make('Research Institution', 'ResearchInstitutionID')
-                ->options($this->getInstitutions())
+                ->options(Researchinstitution::all()
+                    ->pluck('ResearchInstitution_ID', 'RIName')->toArray())
                 ->placeholder('Specify Institution?')
                 ->rules(['required'])
                 ->errorMsg('You must specify institution'),
             Select::make('Department', 'DepartmentID')
-                ->options($this->getDepartments())
+                ->options(Department::all()
+                    ->pluck('Department_ID', 'DptName')->toArray())
                 ->placeholder('Department?')
                 ->rules(['required'])
                 ->errorMsg('You must specify department'),
-            Input::make('Affiliation', 'Affiliation')->inputAttr(['disabled' => true]),
+            Input::make('Affiliation', 'Affiliation')->inputAttr(['disabled'=>true])
+                ->rules(['required']),
+//            Select::make('Affiliation', 'Affiliation')
+//                ->options([])
+//                ->placeholder('Select affiliation?')
+//                ->rules(['required'])
+//                ->errorMsg('You must specify affiliation')
+//                ->help('What should go in affiliations dropdown???'),
             Radio::make('Approved?', 'Approved')
                 ->options(['Yes' => 1, 'No' => 0])
                 ->default(1),

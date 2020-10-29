@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c1a6724d-207b-446f-96dd-933aebb2740b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createFunder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createFunder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createFundingOpportunity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createFundingOpportunity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createProject.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createProject.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createPublication.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createPublication.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createResearcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createResearcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Researcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Researcher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/researchers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/researchers.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +15,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -36,25 +35,25 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="kris@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="kris_db@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="kris@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="kris_db@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="kris@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="kris_db@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="kris: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="kris_db: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="kris@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="kris_db@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="kris: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="fundingopportunities: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="kris_db: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="researchinstitutions: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -192,8 +191,9 @@
   </component>
   <component name="ProjectId" id="1jK08T2pl5e0nmHCo3GG6b25lDi" />
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="derby&#10;mysql" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
@@ -249,7 +249,12 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@4d45df63" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@afb7f04f" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@afb7f04f" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@4ea91a77" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -268,6 +273,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603546216956</updated>
       <workItem from="1603546229997" duration="12763000" />
+      <workItem from="1603914377465" duration="12395000" />
     </task>
     <servers />
   </component>

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Forms;
 
 use App\Models\Funder;
+use App\Models\Researcher;
 use App\Models\Researchproject;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -17,12 +18,14 @@ use Tanthammar\TallForms\Traits\UploadsFiles;
 
 class createProject extends Component
 {
-    use TallForm,WithFileUploads, UploadsFiles;
-    public $abstract_files;
-    public $other_files;
+    use TallForm, WithFileUploads, UploadsFiles;
+    public $abstractDocumentPath, $otherProjectDocsPath;
+    public $isFunded;
 
     public function mount(?Researchproject $researchproject)
     {
+        $researchproject=Researchproject::first();
+        $this->isFunded = false;
         //Gate::authorize()
         $this->fill([
             'formTitle' => trans('global.create') . ' ' . trans('crud.researchproject.title_singular'),
@@ -46,42 +49,81 @@ class createProject extends Component
     {
         $this->model->update($validated_data);
     }
+    public function updatedResearcherID($validated_value)
+    {
+//        $this->model = new Researchproject();
+        if (Researchproject::where('Researcher_ID', '=', $validated_value)->first() != null) {
+            $this->model = Researchproject::where('Researcher_ID', '=', $validated_value)->first();
+        } else {
+            $this->model = new Researchproject();
+        }
+        $this->model->User_ID = Researcher::find($validated_value)->User_ID;
+        $this->model->Researcher_ID = $validated_value;
+        $this->mount_form($this->model);
+    }
+    public function saveAbstractDocumentPath($validated_file)
+    {
+        $path = filled($validated_file) ? $this->abstractDocumentPath->store('ProjectAbstractDocuments') : null;
+        //do something with the model?
+        if (optional($this->model)->exists && filled($path)) {
+            $this->model->abstractDocumentPath = $path;
+            $this->model->save();
+        }
+    }
+    public function saveOtherProjectDocsPath($validated_file)
+    {
+        $path = filled($validated_file) ? $this->otherProjectDocsPath->store('ProjectRelatedDocument.pdf') : null;
+        //do something with the model?
+        if (optional($this->model)->exists && filled($path)) {
+            $this->model->otherProjectDocsPath = $path;
+            $this->model->save();
+        }
+    }
+    public function updatedFunded($validated_value)
+    {
+        $this->isFunded = $validated_value;
+    }
 
     public function fields()
     {
         return [
-            Input::make('Project Title')
+            Select::make('Researcher','Researcher_ID')
+                ->options($this->getResearchers())
                 ->rules('required'),
-            Textarea::make('Project Abstract')
-                ->rows(4)
+            Input::make('Project Title', 'ProjectTitle')
+                ->rules('required'),
+            Textarea::make('Project Abstract', 'ProjectAbstract')
+                ->rows(8)
                 ->rules('string'),
-            FileUpload::make('Upload Abstract file', 'abstract_files')
-                ->help('Max 1024kb, png, jpeg, gif or tiff') //important for usability to inform about type/size limitations
-                ->rules('nullable|mimes:png,jpg,jpeg,gif,tiff|max:1024') //only if you want to override livewire main config validation
-                ->accept("pdf/*"),
-            Select::make('Project Research Area')
+            optional($this->model)->exists //you probably do not want to attach files if the model does not exist
+                ? FileUpload::make('Upload Abstract file', 'abstractDocumentPath')
+                ->help('Max 5 megabytes, *.pdf (Existing Project files will be replaced)') //important for usability to inform about type/size limitations
+                ->rules('nullable|mimes:pdf|max:5120') //only if you want to override livewire main config validation
+                ->accept(".pdf") : null,
+            Select::make('Project Research Area', 'ProjectResearchAreas')
                 ->options($this->getResearchAreas())
                 ->placeholder('Select research area?')
                 ->rules(['required'])
                 ->errorMsg('You must specify research area'),
-            Textarea::make('Researchers Involved')
+//            todo: use tag fields below
+            Textarea::make('Researchers Involved', 'ResearchersInvolved')
                 ->rows(3)
                 ->rules('string'),
-            Radio::make('Is project funded?')
+            Radio::make('Is project funded?', 'Funded')
                 ->options(['Yes' => 1, 'No' => 0])
                 ->default(0),
-            Select::make('Funder')
-                ->options(['$this->getFunders()'])
-                ->placeholder('Select Funder'),
-            Select::make('Project Status')
-                ->options(['Ongoing' => 'Ongoing', 'Completed' => 'Completed'])
+            $this->isFunded ? Select::make('Funder', 'Funder_ID')
+                ->options($this->getFunders())
+                ->placeholder('Select Funder') : null,
+            Select::make('Project Status', 'Status')
+                ->options(['Ongoing', 'Completed'])
                 ->default('Ongoing'),
-            FileUpload::make('Upload Other project files', 'other_files')
+            optional($this->model)->exists //you probably do not want to attach files if the model does not exist
+                ? FileUpload::make('Upload Other project files', 'otherProjectDocsPath')
                 ->multiple()
-                ->help('Max 1024kb, png, jpeg, gif or tiff') //important for usability to inform about type/size limitations
-                ->rules('nullable|mimes:png,jpg,jpeg,gif,tiff|max:1024') //only if you want to override livewire main config validation
-                ->accept("pdf/*"),
-
+                ->help('Max 5 megabytes, *.pdf (Existing Project files will be replaced)') //important for usability to inform about type/size limitations
+                ->rules('nullable|mimes:pdf|max:5120') //only if you want to override livewire main config validation
+                ->accept(".pdf") : null,
         ];
     }
 
@@ -94,5 +136,9 @@ class createProject extends Component
     public function getFunders()
     {
         return Funder::all()->pluck(['Funder_ID' => 'FunderName']);
+    }
+    public function getResearchers()
+    {
+        return collect(DB::table('researchers')->leftJoin('users', 'researchers.User_ID', 'users.id')->get())->pluck('Researcher_ID', 'name')->all();
     }
 }

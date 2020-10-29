@@ -62,7 +62,7 @@ class createPublication extends Component
 
     public function updatedResearcherID($validated_value)
     {
-        $this->model = new Publication();
+//        $this->model = new Publication();
         if (Publication::where('Researcher_ID', '=', $validated_value)->first() != null) {
             $this->model = Publication::where('Researcher_ID', '=', $validated_value)->first();
         } else {

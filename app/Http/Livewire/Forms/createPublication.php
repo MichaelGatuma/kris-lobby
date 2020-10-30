@@ -82,11 +82,10 @@ class createPublication extends Component
                 ->rules('required'),
             Input::make('Publication Title', 'PublicationTitle')
                 ->rules('required'),
-            optional($this->model)->exists //you probably do not want to attach files if the model does not exist
-                ? FileUpload::make('Upload Publication', 'PublicationPath')
+            FileUpload::make('Upload Publication', 'PublicationPath')
                 ->help('Max 5 megabytes, *.pdf (Existing Publication files will be replaced)') //important for usability to inform about type/size limitations
                 ->rules('nullable|mimes:pdf|max:5120') //only if you want to override livewire main config validation
-                ->accept(".pdf") : null,
+                ->accept(".pdf"),
             Input::make('Date of Publication', 'DateOfPublication')
                 ->type('date')
                 ->step(7)

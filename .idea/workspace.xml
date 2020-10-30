@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1a6724d-207b-446f-96dd-933aebb2740b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createUser.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pages/users.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kris-lobby.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kris-lobby.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createFunder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createFunder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createFundingOpportunity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createFundingOpportunity.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createProject.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createProject.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createPublication.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createPublication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createResearcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createResearcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/researcher.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Funder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Funder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Fundingopportunity.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/FundingOpportunity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Publication.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Publication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/crud.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/crud.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-dropdown.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -222,6 +206,8 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="npm run dev" />
+      <command value="php artisan serve" />
+      <command value="npm run watch" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -251,8 +237,19 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="watch" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="watch" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.watch" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -279,7 +276,8 @@
       <updated>1603546216956</updated>
       <workItem from="1603546229997" duration="12763000" />
       <workItem from="1603914377465" duration="12395000" />
-      <workItem from="1603936794356" duration="36380000" />
+      <workItem from="1603936794356" duration="37067000" />
+      <workItem from="1604043565593" duration="2001000" />
     </task>
     <servers />
   </component>

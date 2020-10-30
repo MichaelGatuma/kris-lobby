@@ -41,6 +41,7 @@ class createProject extends Component
     public function onCreateModel($validated_data)
     {
         // Set the $model property in order to conditionally display fields when the model instance exists, on saveAndStayResponse()
+        $validated_data['User_ID'] = Researcher::find($validated_data['Researcher_ID'])->User_ID;
         $this->model = Researchproject::create($validated_data);
     }
 
@@ -95,11 +96,10 @@ class createProject extends Component
             Textarea::make('Project Abstract', 'ProjectAbstract')
                 ->rows(8)
                 ->rules('string'),
-            optional($this->model)->exists //you probably do not want to attach files if the model does not exist
-                ? FileUpload::make('Upload Abstract file', 'abstractDocumentPath')
+             FileUpload::make('Upload Abstract file', 'abstractDocumentPath')
                 ->help('Max 5 megabytes, *.pdf (Existing Project files will be replaced)') //important for usability to inform about type/size limitations
                 ->rules('nullable|mimes:pdf|max:5120') //only if you want to override livewire main config validation
-                ->accept(".pdf") : null,
+                ->accept(".pdf"),
             Select::make('Project Research Area', 'ProjectResearchAreas')
                 ->options($this->getResearchAreas())
                 ->placeholder('Select research area?')
@@ -118,12 +118,10 @@ class createProject extends Component
             Select::make('Project Status', 'Status')
                 ->options(['Ongoing', 'Completed'])
                 ->default('Ongoing'),
-            optional($this->model)->exists //you probably do not want to attach files if the model does not exist
-                ? FileUpload::make('Upload Other project files', 'otherProjectDocsPath')
-                ->multiple()
+             FileUpload::make('Upload Other project files', 'otherProjectDocsPath')
                 ->help('Max 5 megabytes, *.pdf (Existing Project files will be replaced)') //important for usability to inform about type/size limitations
                 ->rules('nullable|mimes:pdf|max:5120') //only if you want to override livewire main config validation
-                ->accept(".pdf") : null,
+                ->accept("*.pdf"),
         ];
     }
 

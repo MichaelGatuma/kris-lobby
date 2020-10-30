@@ -49,6 +49,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'Title',
+        'profPic',
+        'verified_at',
     ];
 
     /**
@@ -57,7 +60,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
@@ -91,11 +93,11 @@ class User extends Authenticatable
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function researchers()
+    public function researcher()
     {
-        return $this->hasMany('App\Models\Researcher', 'User_ID');
+        return $this->hasOne('App\Models\Researcher', 'User_ID');
     }
 
     /**

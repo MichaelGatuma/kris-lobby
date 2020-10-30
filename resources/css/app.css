@@ -1,3 +1,11 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
+@import "custom";
+@import 'tall-theme';
 @import 'tailwindcss/utilities';
+/**
+* For AlpineJS
+ */
+[x-cloak] {
+    display: none;
+}

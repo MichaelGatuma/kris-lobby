@@ -14,11 +14,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $DeadlineForApplication
  * @property Funder $funder
  */
-class Fundingopportunity extends Model
+class FundingOpportunity extends Model
 {
     /**
      * The primary key for the model.
-     * 
+     *
      * @var string
      */
     protected $primaryKey = 'FundingOpportunity_ID';

@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1a6724d-207b-446f-96dd-933aebb2740b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/kris-lobby.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kris-lobby.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createPublication.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createPublication.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Forms/createProject.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Forms/createProject.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -185,6 +190,9 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-translatable" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-tags" />
       <path value="$PROJECT_DIR$/vendor/spatie/eloquent-sortable" />
+      <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jK08T2pl5e0nmHCo3GG6b25lDi" />
@@ -277,6 +285,8 @@
       <workItem from="1603914377465" duration="12395000" />
       <workItem from="1603936794356" duration="37067000" />
       <workItem from="1604043565593" duration="2511000" />
+      <workItem from="1604097989043" duration="251000" />
+      <workItem from="1604311139705" duration="3088000" />
     </task>
     <servers />
   </component>

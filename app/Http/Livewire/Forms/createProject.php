@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Forms;
 use App\Models\Funder;
 use App\Models\Researcher;
 use App\Models\Researchproject;
+use Barryvdh\Debugbar\Facade as DebugBar;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -24,6 +25,10 @@ class createProject extends Component
 
     public function mount(?Researchproject $researchproject)
     {
+        DebugBar::info('Hello there');
+        Debugbar::error('Error!');
+        Debugbar::warning('Watch out…');
+        Debugbar::addMessage('Another message', 'important');
 //        $researchproject=Researchproject::first();
         $this->isFunded = false;
         //Gate::authorize()
@@ -133,7 +138,7 @@ class createProject extends Component
 
     public function getFunders()
     {
-        return Funder::all()->pluck(['Funder_ID' => 'FunderName']);
+        return Funder::all()->pluck('Funder_ID', 'FunderName');
     }
     public function getResearchers()
     {

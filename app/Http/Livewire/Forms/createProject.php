@@ -25,10 +25,6 @@ class createProject extends Component
 
     public function mount(?Researchproject $researchproject)
     {
-        DebugBar::info('Hello there');
-        Debugbar::error('Error!');
-        Debugbar::warning('Watch out…');
-        Debugbar::addMessage('Another message', 'important');
 //        $researchproject=Researchproject::first();
         $this->isFunded = false;
         //Gate::authorize()
@@ -55,6 +51,7 @@ class createProject extends Component
     {
 //        $this->model->update($validated_data);
     }
+
     public function updatedResearcherID($validated_value)
     {
 //        $this->model = new Researchproject();
@@ -67,6 +64,7 @@ class createProject extends Component
 //        $this->model->Researcher_ID = $validated_value;
 //        $this->mount_form($this->model);
     }
+
     public function saveAbstractDocumentPath($validated_file)
     {
         $path = filled($validated_file) ? $this->abstractDocumentPath->store('ProjectAbstractDocuments') : null;
@@ -76,6 +74,7 @@ class createProject extends Component
             $this->model->save();
         }
     }
+
     public function saveOtherProjectDocsPath($validated_file)
     {
         $path = filled($validated_file) ? $this->otherProjectDocsPath->store('ProjectRelatedDocument.pdf') : null;
@@ -85,15 +84,21 @@ class createProject extends Component
             $this->model->save();
         }
     }
+
     public function updatedFunded($validated_value)
     {
         $this->isFunded = $validated_value;
     }
 
+    public function updatedFunderid($validated_value)
+    {
+        DebugBar::info('Funder_id:' . $validated_value);
+    }
+
     public function fields()
     {
         return [
-            Select::make('Researcher','Researcher_ID')
+            Select::make('Researcher', 'Researcher_ID')
                 ->options($this->getResearchers())
                 ->rules('required'),
             Input::make('Project Title', 'ProjectTitle')
@@ -101,7 +106,7 @@ class createProject extends Component
             Textarea::make('Project Abstract', 'ProjectAbstract')
                 ->rows(8)
                 ->rules('string'),
-             FileUpload::make('Upload Abstract file', 'abstractDocumentPath')
+            FileUpload::make('Upload Abstract file', 'abstractDocumentPath')
                 ->help('Max 5 megabytes, *.pdf (Existing Project files will be replaced)') //important for usability to inform about type/size limitations
                 ->rules('nullable|mimes:pdf|max:5120') //only if you want to override livewire main config validation
                 ->accept(".pdf"),
@@ -123,11 +128,16 @@ class createProject extends Component
             Select::make('Project Status', 'Status')
                 ->options(['Ongoing', 'Completed'])
                 ->default('Ongoing'),
-             FileUpload::make('Upload Other project files', 'otherProjectDocsPath')
+            FileUpload::make('Upload Other project files', 'otherProjectDocsPath')
                 ->help('Max 5 megabytes, *.pdf (Existing Project files will be replaced)') //important for usability to inform about type/size limitations
                 ->rules('nullable|mimes:pdf|max:5120') //only if you want to override livewire main config validation
                 ->accept("*.pdf"),
         ];
+    }
+
+    public function getResearchers()
+    {
+        return collect(DB::table('researchers')->leftJoin('users', 'researchers.User_ID', 'users.id')->get())->pluck('Researcher_ID', 'name')->all();
     }
 
     public function getResearchAreas()
@@ -139,9 +149,5 @@ class createProject extends Component
     public function getFunders()
     {
         return Funder::all()->pluck('Funder_ID', 'FunderName');
-    }
-    public function getResearchers()
-    {
-        return collect(DB::table('researchers')->leftJoin('users', 'researchers.User_ID', 'users.id')->get())->pluck('Researcher_ID', 'name')->all();
     }
 }
